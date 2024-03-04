@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: editor-configmap
+data:
+  EDITED_IMAGES_QUEUE: "edited_images"
+  IMAGES_QUEUE: "images"

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: editor
+  labels:
+    app: editor
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: editor
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 8
+  template:
+    metadata:
+      labels:
+        app: editor
+    spec:
+      containers:
+        - name: editor
+          image: nikhiljohnykaruthedath/editor
+          envFrom:
+            - configMapRef:
+                name: editor-configmap
+            - secretRef:
+                name: editor-secret
